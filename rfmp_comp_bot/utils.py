@@ -56,8 +56,6 @@ def get_cogs():
     out_list = []
 
     for cog_file in os.walk(os.path.dirname(os.path.abspath(__file__)) + "/cogs/"):
-        print(cog_file)
-
         cog_stringified = cog_file[2][0]
 
         if cog_stringified[-3:] == ".py":
