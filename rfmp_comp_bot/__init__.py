@@ -1,5 +1,5 @@
 from discord.ext import commands
-from .utils import Config, get_cogs
+from rfmp_comp_bot.utils import Config, get_cogs
 
 CONFIG_PATH = "config.toml"  # change for custom config path
 
