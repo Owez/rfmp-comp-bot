@@ -1,5 +1,7 @@
 import os
 import toml
+import datetime
+from discord import Embed
 
 
 class Config:
@@ -63,6 +65,7 @@ def get_cogs():
 
     return out_list
 
+
 def embed_generator(gen_text):
     """
     Discord embed generator, using a small templating system
@@ -81,5 +84,25 @@ def embed_generator(gen_text):
     < Returns embed object from discord
     """
 
+    embed = Embed()
+
     for field in gen_text["main"].items():
-        print(field)
+        embed.add_field(name=field[0], value=field[1])
+
+    if "meta" in gen_text:
+        if "should_footer" in gen_text["meta"]:
+            _add_footer_embed(embed)
+    else:
+        _add_footer_embed(embed)
+
+    return embed
+
+
+def _add_footer_embed(embed):
+    """
+    Adds footer to embed
+
+    - embed: discord.Embed()
+    """
+
+    embed.set_footer(text="RFMP Comp Bot made by scOwez.")
