@@ -30,13 +30,13 @@ class Ping(commands.Cog):
             )
         )
 
-        await ctx.send(
-            RETURN_EMOTE
-        )
+        await ctx.send(RETURN_EMOTE)
+
 
 def setup(client):
     """
     Adds the command to the client object
     """
-    
+
     client.add_cog(Ping(client))
+    print("\tLoaded Ping cog!")
