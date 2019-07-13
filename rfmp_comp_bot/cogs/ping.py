@@ -4,10 +4,9 @@ from utils import embed_generator
 
 class Ping(commands.Cog):
     """
-    Ping command
+    Ping cog for bot
 
-    > Detects \'ping\'
-    < Returns an emote of a ping-pong racket
+    - Ping command
     """
 
     def __init__(self, client):

@@ -58,10 +58,9 @@ def get_cogs():
     out_list = []
 
     for cog_file in os.walk(os.path.dirname(os.path.abspath(__file__)) + "/cogs/"):
-        cog_stringified = cog_file[2][0]
-
-        if cog_stringified[-3:] == ".py":
-            out_list.append(f"cogs.{cog_stringified[:-3]}")
+        for cog in cog_file[2]:
+            if cog[-3:] == ".py":
+                out_list.append(f"cogs.{cog[:-3]}")
 
     return out_list
 
