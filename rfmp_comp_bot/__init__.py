@@ -19,7 +19,7 @@ async def on_ready():
     When client starts up display online message in CLI
     """
 
-    print(f"'{client.user.name}' online with the id '{client.user.id}'!")
+    print(f"'{client.user.name}' is online with the id '{client.user.id}'!")
 
     for cog in get_cogs():
         client.load_extension(cog)

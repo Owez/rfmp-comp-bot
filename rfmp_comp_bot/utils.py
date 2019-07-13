@@ -59,6 +59,27 @@ def get_cogs():
         cog_stringified = cog_file[2][0]
 
         if cog_stringified[-3:] == ".py":
-            out_list.append(f"cog.{cog_stringified[:-3]}")
+            out_list.append(f"cogs.{cog_stringified[:-3]}")
 
     return out_list
+
+def embed_generator(gen_text):
+    """
+    Discord embed generator, using a small templating system
+
+    - gen_text: a dict following the following syntax:
+        INGRESS SPEC
+        {
+            [BODY]: {
+                [FIELD NAME]: [FIELD TEXT],
+                [FIELD NAME]: [FIELD TEXT]
+            },
+            [META (optional)]: {
+                [SHOULD FOOTER (optional)]: [BOOL (default yes)]
+            }
+        }
+    < Returns embed object from discord
+    """
+
+    for field in gen_text["main"].items():
+        print(field)
