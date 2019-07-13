@@ -24,7 +24,7 @@ class TeamAdder(commands.Cog):
 
         return get(guild.roles, id=role_id)
 
-    @client.event
+    @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
         """
         Gets reaction data and user that posted it. If on right message and
