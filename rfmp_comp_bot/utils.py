@@ -59,7 +59,7 @@ def get_cogs():
         cog_stringified = cog_file[2][0]
 
         if cog_stringified[-3:] == ".py":
-            out_list.append(f"cogs.{cog_stringified[:-3]}")
+            out_list.append(f"{__package__}.cogs.{cog_stringified[:-3]}")
 
     return out_list
 

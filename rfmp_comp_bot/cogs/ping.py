@@ -1,5 +1,5 @@
 from discord.ext import commands
-from rfmp_comp_client.utils import embed_generator
+from utils import embed_generator
 
 
 class Ping(commands.Cog):
