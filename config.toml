@@ -4,5 +4,5 @@ desc = "A small moderation and management bot for the RFMP comp server"
 creator_id = 223903236069785601
 
 [team]
-blue_role_id = 599638123701600267
-red_role_id = 599638170405175346
+blue_role_id = 599350029324386318
+red_role_id = 599350068272693278
