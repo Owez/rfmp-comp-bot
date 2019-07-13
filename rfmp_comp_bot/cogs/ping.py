@@ -21,7 +21,7 @@ class Ping(commands.Cog):
     async def ping_command(self, ctx):
         RETURN_EMOTE = "🏓"
 
-        await ctx.send(embed_generator({"main": {"Ping": RETURN_EMOTE}}))
+        await ctx.send(embed=embed_generator({"main": {"Ping": RETURN_EMOTE}}))
 
 
 def setup(client):
