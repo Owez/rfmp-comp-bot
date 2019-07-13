@@ -16,7 +16,7 @@ class Admin(commands.Cog):
     @commands.command(
         name="kick",
         description=(
-            "A simple `kick @user` command to kick " "them from the discord server"
+            "A simple `kick @user` command to kick them from the discord server"
         ),
         aliases=["k", "boot", "tempban"],
     )
@@ -30,12 +30,54 @@ class Admin(commands.Cog):
                         f"Kicking the user named '{user_action.name}' "
                         f"from {ctx.guild.name}!"
                     )
+
+                    ctx.guild.kick(user_action)
             else:
                 embed_template = {
                     "main": {
                         "No users mentioned!": (
                             "There where no users mentioned in your "
                             "message so I cannot kick anyone!"
+                        )
+                    }
+                }
+        else:
+            embed_template = {
+                "main": {
+                    "Invalid permissions!": (
+                        "You have not got the sufficant permissions "
+                        f"to use this command, {ctx.message.author.name}"
+                    )
+                }
+            }
+
+        await ctx.send(embed=embed_generator(embed_template))
+
+    @commands.command(
+        name="ban",
+        description=(
+            "A simple `ban @user` command to ban them from the discord server"
+        ),
+        aliases=["b", "hammer"],
+    )
+    async def ban_command(self, ctx):
+        if ctx.message.author.guild_permissions.administrator:
+            if ctx.message.mentions:
+                embed_template = {"main": {}}
+
+                for user_action in ctx.message.mentions:
+                    embed_template["main"][f"Banning {user_action.name}.."] = (
+                        f"Banning the user named '{user_action.name}' "
+                        f"from {ctx.guild.name}!"
+                    )
+
+                    ctx.guild.ban(user_action)
+            else:
+                embed_template = {
+                    "main": {
+                        "No users mentioned!": (
+                            "There where no users mentioned in your "
+                            "message so I cannot ban anyone!"
                         )
                     }
                 }
