@@ -45,6 +45,7 @@ class TeamAdder(commands.Cog):
                 }
             }
 
+            await ctx.author.send(embed=embed_generator(embed_template))
             await ctx.author.remove_roles(red_role)
 
         if blue_role:
@@ -75,6 +76,65 @@ class TeamAdder(commands.Cog):
                     "main": {
                         "Failed to add to Blue Team!": (
                             "The Blue's role does not exist so I could not "
+                            "add you to it!"
+                        )
+                    }
+                }
+
+        await ctx.author.send(embed=embed_generator(embed_template))
+
+    @commands.command(
+        name="red",
+        description=(
+            "Adds user to red team & removes them from blue if they "
+            "are already in it"
+        ),
+        aliases=["team_red", "red_team"],
+    )
+    async def red_command(self, ctx):
+        red_role = get(ctx.author.roles, id=self.config.RED_ROLE_ID)
+        blue_role = get(ctx.author.roles, id=self.config.BLUE_ROLE_ID)
+
+        if blue_role:
+            embed_template = {
+                "main": {
+                    "Moving Teams!": (
+                        "You have been transfared from the Blues to the Reds"
+                    )
+                }
+            }
+
+            await ctx.author.send(embed=embed_generator(embed_template))
+            await ctx.author.remove_roles(blue_role)
+
+        if red_role:
+            embed_template = {
+                "main": {
+                    "Already in the Reds!": (
+                        "You are already inside of the Red Team so nothing "
+                        "will happen!"
+                    )
+                }
+            }
+        else:
+            embed_template = {
+                "main": {
+                    "Welcome to the Red team!": (
+                        "We are happy to welcome you to the "
+                        ":red_circle: team!"
+                    )
+                }
+            }
+
+            try:
+                await ctx.author.add_roles(
+                    await self._get_role(self.config.RED_ROLE_ID, ctx.guild)
+                )
+            except AttributeError:
+                embed_template = {
+                    "main": {
+                        "Failed to add to Red Team!": (
+                            "The Red's role does not exist so I could not "
                             "add you to it!"
                         )
                     }
