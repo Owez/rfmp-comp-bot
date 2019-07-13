@@ -1,0 +1,4 @@
+[settings]
+prefixes = ["!", "?", ";", "~", ".", ","]
+desc = "A small moderation and management bot for the RFMP comp server"
+creator_id = 223903236069785601
