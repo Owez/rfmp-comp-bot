@@ -2,3 +2,12 @@
 prefixes = ["!", "?", ";", "~", ".", ","]
 desc = "A small moderation and management bot for the RFMP comp server"
 creator_id = 223903236069785601
+
+[team]
+message_id = 0
+blue_role_id = 0
+red_role_id = 0
+
+[team.emotes]
+blue = [":large_blue_circle:", "regional_indicator_b:"]
+red = [":red_circle:", ":regional_indicator_r:"]

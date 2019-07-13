@@ -42,10 +42,15 @@ class Config:
         - config_dict: dict object from config
         """
 
+        self.CLIENT_TOKEN = self._get_env_var("CLIENT_TOKEN")
         self.PREFIXES = config_dict["settings"]["prefixes"]
         self.DESCRIPTION = config_dict["settings"]["desc"]
         self.OWNER_ID = config_dict["settings"]["creator_id"]
-        self.CLIENT_TOKEN = self._get_env_var("CLIENT_TOKEN")
+        self.TEAM_MSG_ID = config_dict["team"]["message_id"]
+        self.BLUE_EMOTES = config_dict["team"]["emotes"]["blue"]
+        self.RED_EMOTES = config_dict["team"]["emotes"]["red"]
+        self.BLUE_ROLE_ID = config_dict["team"]["blue_role_id"]
+        self.RED_ROLE_ID = config_dict["team"]["red_role_id"]
 
 
 def get_cogs():
