@@ -1,5 +1,6 @@
+from discord.utils import get
 from discord.ext import commands
-from utils import embed_generator
+from utils import Config, embed_generator
 
 
 class Admin(commands.Cog):
@@ -12,6 +13,35 @@ class Admin(commands.Cog):
 
     def __init__(self, client):
         self.client = client
+        self.config = Config("config.toml")
+
+    async def log_change(self, adverb, ctx, user_action):
+        """
+        Log changes using an adverb to logging channel
+
+        - adverb: string to use (kicked, banned) to add to "you have been 
+          [kicked/banned/etc].
+        - ctx: discord.Context, to use to send messages
+        - user_action: discord.Member, to use as the subject
+        """
+
+        log_channel = get(ctx.guild.channels, id=self.config.LOG_CHANNEL)
+
+        embed_template = {
+            "main": {
+                adverb.title(): (
+                    f"**{ctx.author.name}** {adverb.lower()} "
+                    f"**{user_action.name}**"
+                ),
+                "IDs": f"Admin: {ctx.author.id}, Victim: {user_action.id}",
+                "Channel used": (
+                    "The channel that the Admin used user was "
+                    f"<#{ctx.channel.id}>."
+                )
+            }
+        }
+
+        await log_channel.send(embed=embed_generator(embed_template))
 
     @commands.command(
         name="kick",
@@ -31,7 +61,8 @@ class Admin(commands.Cog):
                         f"from {ctx.guild.name}!"
                     )
 
-                    ctx.guild.kick(user_action)
+                    await ctx.guild.kick(user_action)
+                    await self.log_change("kicked", ctx, user_action)
             else:
                 embed_template = {
                     "main": {
@@ -71,7 +102,8 @@ class Admin(commands.Cog):
                         f"from {ctx.guild.name}!"
                     )
 
-                    ctx.guild.ban(user_action)
+                    await ctx.guild.ban(user_action)
+                    await self.log_change("banned", ctx, user_action)
             else:
                 embed_template = {
                     "main": {

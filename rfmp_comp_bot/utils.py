@@ -48,6 +48,7 @@ class Config:
         self.OWNER_ID = config_dict["settings"]["creator_id"]
         self.BLUE_ROLE_ID = config_dict["team"]["blue_role_id"]
         self.RED_ROLE_ID = config_dict["team"]["red_role_id"]
+        self.LOG_CHANNEL = config_dict["settings"]["log_channel"]
 
 
 def get_cogs():

@@ -1,8 +1,9 @@
 [settings]
-prefixes = ["!", "?", ";", "~", ".", ","]
-desc = "A small moderation and management bot for the RFMP comp server"
-creator_id = 223903236069785601
+prefixes = ["!", "?", ";", "~", ".", ","] # Allowed prefixes for the user to use
+desc = "A small moderation and management bot for the RFMP comp server" # General description
+log_channel = 599889523647709194 # the ID for the bot to log to
+creator_id = 223903236069785601 # scOwez's ID
 
 [team]
-blue_role_id = 599350029324386318
-red_role_id = 599350068272693278
+blue_role_id = 599350029324386318 # The role for the Blue Team
+red_role_id = 599350068272693278 # The role for the Red Team
