@@ -1,7 +1,7 @@
 [settings]
 prefixes = ["!", "?", ";", "~", ".", ","] # Allowed prefixes for the user to use
 desc = "A small moderation and management bot for the RFMP comp server" # General description
-log_channel = 599889523647709194 # the ID for the bot to log to
+log_channel = 599937147419492392 # the ID for the bot to log to
 creator_id = 223903236069785601 # scOwez's ID
 
 [team]
